@@ -1,27 +1,27 @@
 version: 2.1
 jobs:
   build:
+    working_directory: ~/src
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.0 #circleci/node:7.10
-    working_directory: ~/src
     steps:
       - checkout
       - run:
           name: 'Show contents ...'
-          command: ls
+          command: cd src && ls
       - run:
           name: 'Restore Dependencies'
-          command: dotnet restore
+          command: cd src && dotnet restore
       - run:
           name: 'Build solution'
-          command: dotnet build
+          command: cd src && dotnet build
 
   test:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.0
     working_directory: ~/src
     steps:
-      - run: dotnet test
+      - run: cd src && dotnet test
 
   deploy:
     docker:
