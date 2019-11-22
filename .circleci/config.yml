@@ -33,6 +33,10 @@ jobs:
           command: ls
       - run:
           working_directory: ~/project/src
+          name: 'List Contents'
+          command: ls
+      - run:
+          working_directory: ~/project/src
           name: 'Print Working Directory'
           command: pwd
       - run:
