@@ -27,7 +27,7 @@ jobs:
       - run:
           working_directory: ~/project/src
           name: 'Run Application Tests'
-          command: dotnet test -v n --logger trx --results-directory:TestResults --collect:"Code Coverage" --no-restore
+          command: dotnet test -v n --logger trx --results-directory:../TestResults --collect:"Code Coverage" --no-restore
       - run:
           name: 'List Contents'
           command: ls
@@ -40,12 +40,13 @@ jobs:
           name: 'Print Working Directory'
           command: pwd
       - run:
+          working_directory: ~/project
           name: 'Publish test results'
           when: always
           command: |
             dotnet tool install -g trx2junit
             export PATH="${PATH}:/root/.dotnet/tools"
-            trx2junit **/TestResults/*.trx
+            trx2junit TestResults/*.trx
       - store_test_results:
           path: tests/TestResults
       - store_artifacts:
