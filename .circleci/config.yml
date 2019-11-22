@@ -11,16 +11,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: 'Print Working Directory'
-          command: pwd
-      - run:
-          name: 'List Contents'
-          command: ls
-      - run:
-          working_directory: ~/project/src
-          name: 'Print Working Directory'
-          command: pwd
-      - run:
           working_directory: ~/project/src
           name: 'Install project dependencies'
           command: dotnet restore
@@ -28,17 +18,6 @@ jobs:
           working_directory: ~/project/src
           name: 'Run Application Tests'
           command: dotnet test -v n --logger trx --results-directory:../TestResults --collect:"Code Coverage" --no-restore
-      - run:
-          name: 'List Contents'
-          command: ls
-      - run:
-          working_directory: ~/project/src
-          name: 'List Contents'
-          command: ls
-      - run:
-          working_directory: ~/project/src
-          name: 'Print Working Directory'
-          command: pwd
       - run:
           working_directory: ~/project
           name: 'Publish test results'
@@ -57,8 +36,7 @@ jobs:
           working_directory: ~/project/src
           name: 'Print Working Directory'
           command: pwd
-      # - store_artifacts:
-      #     path: C:\Users\circleci\project\test_coverage
+
   build:
     description: Build application with Release configuration
     executor:
@@ -69,6 +47,7 @@ jobs:
           working_directory: ~/project/src
           name: 'Build Application according to some given configuration'
           command: dotnet build --configuration Release
+
 workflows:
   test_and_build:
     jobs:
@@ -76,67 +55,3 @@ workflows:
       - build:
           requires:
             - test
-# version: 2.1
-# jobs:
-#   build:
-#     working_directory: ~/src
-#     docker:
-#       - image: mcr.microsoft.com/dotnet/core/sdk:3.0 #circleci/node:7.10
-#     steps:
-#       - checkout
-#       - run:
-#           name: 'Show contents ...'
-#           command: ls -al
-#       - run:
-#           name: 'Restore Dependencies'
-#           command: cd src && dotnet restore
-#       - run:
-#           name: 'Creating folder for build output ...'
-#           command: mkdir build_output
-#       - run:
-#           name: 'Build solution'
-#           command: cd src && dotnet build --no-restore --configuration Release -p:Version=1.0.0 --output ../build_output
-#       - run:
-#           name: 'Show contents ...'
-#           command: ls -al
-#       - persist_to_workspace:
-#           root: build_output
-#           paths:
-#             - '*'
-
-#   test:
-#     working_directory: ~/src
-#     docker:
-#       - image: mcr.microsoft.com/dotnet/core/sdk:3.0
-#     steps:
-#       - attach_workspace:
-#           at: ~/workspace
-#       - run: ls  -al
-#       - run: dotnet vstest **/**.Tests/bin/Release/**/**.tests.dll
-
-#   deploy:
-#     docker:
-#       - image: mcr.microsoft.com/dotnet/core/sdk:3.0
-#     working_directory: ~/src
-#     steps:
-#       - run: echo deploy step
-
-# workflows:
-#   version: 2.1
-#   build-and-test:
-#     jobs:
-#       - build
-#       - test:
-#           requires:
-#             - build
-#       - hold:
-#           type: approval
-#           requires:
-#             - test
-#       - deploy:
-#           requires:
-#             - hold
-#           filters:
-#             branches:
-#               only:
-#                 - master
