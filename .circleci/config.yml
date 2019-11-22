@@ -16,19 +16,20 @@ jobs:
             - dotnet-packages-v1-{{ checksum "src/UselessProject.Engine.Abstractions/UselessProject.Engine.Abstractions.csproj" }}
             - dotnet-packages-v1-{{ checksum "src/UselessProject.Engine.Tests/UselessProject.Engine.Tests.csproj" }}
       - run:
-          name: "Install project dependencies"
+          name: 'Install project dependencies'
           command: cd src && dotnet.exe restore
       - save_cache:
           paths:
             - C:\Users\circleci\.nuget\packages
-          key: dotnet-packages-v1-{{ checksum "src/UselessProject.Engine/UselessProject.Engine.csproj" }}
-          key: dotnet-packages-v1-{{ checksum "src/UselessProject.Engine.Abstractions/UselessProject.Engine.Abstractions.csproj" }}
-          key: dotnet-packages-v1-{{ checksum "src/UselessProject.Engine.Tests/UselessProject.Engine.Tests.csproj" }}
+          keys:
+            - dotnet-packages-v1-{{ checksum "src/UselessProject.Engine/UselessProject.Engine.csproj" }}
+            - dotnet-packages-v1-{{ checksum "src/UselessProject.Engine.Abstractions/UselessProject.Engine.Abstractions.csproj" }}
+            - dotnet-packages-v1-{{ checksum "src/UselessProject.Engine.Tests/UselessProject.Engine.Tests.csproj" }}
       - run:
-          name: "Run Application Tests"
+          name: 'Run Application Tests'
           command: cd src && dotnet.exe test -v n --results-directory:test_coverage --collect:"Code Coverage"
       - run:
-          name: "Print Working Directory"
+          name: 'Print Working Directory'
           command: pwd
       - store_artifacts:
           path: C:\Users\circleci\project\test_coverage
@@ -39,7 +40,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Build Application according to some given configuration"
+          name: 'Build Application according to some given configuration'
           command: cd src && dotnet.exe build --configuration Release
 workflows:
   test_and_build:
@@ -48,7 +49,6 @@ workflows:
       - build:
           requires:
             - test
-
 # version: 2.1
 # jobs:
 #   build:
