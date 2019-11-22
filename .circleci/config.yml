@@ -14,6 +14,9 @@ jobs:
           name: 'Print Working Directory'
           command: pwd
       - run:
+          name: 'List Contents'
+          command: ls -al
+      - run:
           working_directory: /src
           name: 'Print Working Directory'
           command: pwd
