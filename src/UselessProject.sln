@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UselessProject.Core", "UselessProject.Core\UselessProject.Core.csproj", "{A8B7D384-21AC-490D-BF77-43D0BABBB477}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UselessProject.Engine", "UselessProject.Engine\UselessProject.Engine.csproj", "{8B6ED769-4042-4A7E-A7B6-2BFBEB56AAE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UselessProject.Engine", "UselessProject.Engine\UselessProject.Engine.csproj", "{8B6ED769-4042-4A7E-A7B6-2BFBEB56AAE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UselessProject.Engine.Abstractions", "UselessProject.Engine.Abstractions\UselessProject.Engine.Abstractions.csproj", "{3A4F3DFC-8989-4527-B050-5844705B12D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UselessProject.Engine.Abstractions", "UselessProject.Engine.Abstractions\UselessProject.Engine.Abstractions.csproj", "{3A4F3DFC-8989-4527-B050-5844705B12D6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UselessProject.Engine.Tests", "UselessProject.Engine.Tests\UselessProject.Engine.Tests.csproj", "{CA8B6EE4-5893-4547-ACAC-EBE904F2FA3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UselessProject.Engine.Tests", "UselessProject.Engine.Tests\UselessProject.Engine.Tests.csproj", "{CA8B6EE4-5893-4547-ACAC-EBE904F2FA3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A8B7D384-21AC-490D-BF77-43D0BABBB477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8B7D384-21AC-490D-BF77-43D0BABBB477}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8B7D384-21AC-490D-BF77-43D0BABBB477}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8B7D384-21AC-490D-BF77-43D0BABBB477}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B6ED769-4042-4A7E-A7B6-2BFBEB56AAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B6ED769-4042-4A7E-A7B6-2BFBEB56AAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B6ED769-4042-4A7E-A7B6-2BFBEB56AAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
