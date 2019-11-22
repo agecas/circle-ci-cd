@@ -8,20 +8,31 @@ jobs:
       - checkout
       - run:
           name: 'Show contents ...'
-          command: cd src && ls
+          command: cd /src && ls
       - run:
           name: 'Restore Dependencies'
-          command: cd src && dotnet restore
+          command: cd /src && dotnet restore
+      - run:
+          name: 'Creating folder for build output ...'
+          command: mkdir build_output
       - run:
           name: 'Build solution'
-          command: cd src && dotnet build
+          command: cd /src && dotnet build --no-restore --configuration Release -p:Version=1.0.0 --output ../build_output
+      - persist_to_workspace:
+          root: build_output
+          paths:
+            - '*'
 
   test:
+    working_directory: ~/src
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.0
-    working_directory: ~/src
     steps:
-      - run: ls && dotnet test
+      - attach_workspace:
+          at: ~/src/workspace
+      - run: ls
+      - run: cd /output ls
+      - run: dotnet vstest build_output/**/**.Tests/bin/Release/**/**.tests.dll
 
   deploy:
     docker:
