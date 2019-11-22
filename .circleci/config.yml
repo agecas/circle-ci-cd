@@ -11,13 +11,13 @@ jobs:
           command: ls -al
       - run:
           name: 'Restore Dependencies'
-          command: cd /src && dotnet restore
+          command: cd src && dotnet restore
       - run:
           name: 'Creating folder for build output ...'
           command: mkdir build_output
       - run:
           name: 'Build solution'
-          command: cd /src && dotnet build --no-restore --configuration Release -p:Version=1.0.0 --output ../build_output
+          command: cd src && dotnet build --no-restore --configuration Release -p:Version=1.0.0 --output ../build_output
       - persist_to_workspace:
           root: build_output
           paths:
