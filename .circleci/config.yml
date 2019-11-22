@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: 'Show contents ...'
-          command: cd /src && ls
+          command: ls -al
       - run:
           name: 'Restore Dependencies'
           command: cd /src && dotnet restore
