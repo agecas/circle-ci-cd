@@ -17,19 +17,19 @@ jobs:
           name: 'List Contents'
           command: ls
       - run:
-          working_directory: /src
+          working_directory: ~/project/src
           name: 'Print Working Directory'
           command: pwd
       - run:
-          working_directory: /src
+          working_directory: ~/project/src
           name: 'Install project dependencies'
           command: dotnet restore
       - run:
-          working_directory: /src
+          working_directory: ~/project/src
           name: 'Run Application Tests'
           command: dotnet test -v n --results-directory:test_coverage --collect:"Code Coverage"
       - run:
-          working_directory: /src
+          working_directory: ~/project/src
           name: 'Print Working Directory'
           command: pwd
       - store_artifacts:
@@ -41,7 +41,7 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: /src
+          working_directory: ~/project/src
           name: 'Build Application according to some given configuration'
           command: dotnet build --configuration Release
 workflows:
