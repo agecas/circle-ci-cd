@@ -11,6 +11,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: 'Print Working Directory'
+          command: pwd
+      - run:
+          working_directory: /src
+          name: 'Print Working Directory'
+          command: pwd
+      - run:
           working_directory: /src
           name: 'Install project dependencies'
           command: dotnet restore
