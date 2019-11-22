@@ -12,10 +12,10 @@ jobs:
       - checkout
       - run:
           name: 'Install project dependencies'
-          command: cd src && dotnet restore
+          command: src\dotnet restore
       - run:
           name: 'Run Application Tests'
-          command: cd src && dotnet test -v n --results-directory:test_coverage --collect:"Code Coverage"
+          command: src\dotnet test -v n --results-directory:test_coverage --collect:"Code Coverage"
       - run:
           name: 'Print Working Directory'
           command: pwd
@@ -29,7 +29,7 @@ jobs:
       - checkout
       - run:
           name: 'Build Application according to some given configuration'
-          command: cd src && dotnet build --configuration Release
+          command: src\dotnet build --configuration Release
 workflows:
   test_and_build:
     jobs:
